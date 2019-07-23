@@ -2,8 +2,16 @@ from flask_sqlalchemy import SQLAlchemy
 from twitterapp import app
 from werkzeug.security import generate_password_hash,check_password_hash
 
-db= SQLAlchemy(app)
-class User(db.Model):
+#Flask-Login Imports
+from flask_login import UserMixin
+from twitterapp import login_manager
+
+db = SQLAlchemy(app)
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
+class User(db.Model,UserMixin):
     id = db.Column(db.Integer, primary_key = True)
     username = db.Column(db.String(150),nullable = False)
     email = db.Column(db.String(150), unique = True, nullable = False)

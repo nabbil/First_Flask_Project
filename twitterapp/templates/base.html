@@ -16,7 +16,9 @@
   <body>
     <!--Navbar Start-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">TwitterClone</a>
+      <a class="navbar-brand" href="{{ url_for('hello_world') }}"
+        >TwitterClone</a
+      >
       <button
         class="navbar-toggler"
         type="button"
@@ -39,7 +41,11 @@
             >Register</a
           >
           <a class="nav-item nav-link" href="{{ url_for('login') }}">Login</a>
-          <a class="nav-item nav-link" href="#">Posts</a>
+          <a class="nav-item nav-link" href="{{ url_for('posts') }}">Posts</a
+          ><a class="nav-item nav-link" href="{{ url_for('logout') }}"
+            >Logout</a
+          >
+
           <a
             class="nav-item nav-link disabled"
             href="#"

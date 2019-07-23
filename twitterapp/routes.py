@@ -3,6 +3,9 @@ from twitterapp import app
 from twitterapp.forms import SignUpForm, LoginForm
 from twitterapp.models import db
 
+# Flast-Login Import for Login
+from flask_login import login_user, current_user, logout_user, login_required
+
 # Importing Database Model
 from twitterapp.models import User, check_password_hash
 
@@ -34,6 +37,19 @@ def login():
     password = form.password.data
     user = User.query.filter(User.email == user_email).first()
     if user and check_password_hash(user.password, password):
+        login_user(user)
+        print(current_user.username)
         return redirect(url_for('hello_world'))
     print(form.email.data, form.password.data)
     return render_template("login.html", form=form)
+
+@app.route("/posts", methods=["GET", "POST"])
+@login_required
+def posts():
+    return render_template("create-post.html")
+
+
+@app.route("/logout")
+def logout():
+    logout_user()
+    return redirect(url_for('hello_world'))

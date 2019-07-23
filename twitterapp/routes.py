@@ -1,7 +1,7 @@
 from flask import render_template, redirect, url_for
 from twitterapp import app
-from twitterapp.forms import SignUpForm, LoginForm
-from twitterapp.models import db
+from twitterapp.forms import SignUpForm, LoginForm, PostForm
+from twitterapp.models import db, Post, User
 
 # Flast-Login Import for Login
 from flask_login import login_user, current_user, logout_user, login_required
@@ -43,10 +43,18 @@ def login():
     print(form.email.data, form.password.data)
     return render_template("login.html", form=form)
 
+
 @app.route("/posts", methods=["GET", "POST"])
 @login_required
 def posts():
-    return render_template("create-post.html")
+    form = PostForm()
+    title = form.title.data
+    content = form.content.data
+    user_id = current_user.id
+    post = Post(title=title, content=content, user_id=user_id)
+    db.session.add(post)
+    db.session.commit()
+    return render_template("create-post.html", form=form)
 
 
 @app.route("/logout")

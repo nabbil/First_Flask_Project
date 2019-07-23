@@ -2,5 +2,20 @@
 
 <h1>Create a New Post</h1>
 
-{% endblock content %}
+<form action="" method="POST">
+  <fieldset>
+    {{ form.title.label }}
+    {{ form.title(class="form-control")}}
+  </fieldset>
 
+  <fieldset>
+    {{ form.content.label }}
+    {{ form.content(class="form-control")}}
+  </fieldset>
+
+  <fieldset>
+    {{ form.submit(class="form-control") }}
+  </fieldset>
+</form>
+
+{% endblock content %}

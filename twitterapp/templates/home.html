@@ -1,56 +1,74 @@
-{% extends 'base.html' %}
-
-{% block content %}
-
+{% extends 'base.html' %} {% block content %}
 
 <h1>Twitter Clone Application</h1>
 
 <div class="jumbotron">
-        <h1 class="display-4">Hello, world!</h1>
-        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-        <hr class="my-4">
-        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+  <h1 class="display-4">Hello, world!</h1>
+  <p class="lead">
+    This is a simple hero unit, a simple jumbotron-style component for calling
+    extra attention to featured content or information.
+  </p>
+  <hr class="my-4" />
+  <p>
+    It uses utility classes for typography and spacing to space content out
+    within the larger container.
+  </p>
+  <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
 </div>
 
-
+{% if current_user.is_authenticated %}
 <div class="row">
-    <!--First Card-->
-    <div class="col-md-4">
-        <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
+  <!--First Card-->
+  <div class="col-md-4">
+    <div class="card" style="width: 18rem;">
+      <img src="..." class="card-img-top" alt="..." />
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">
+          Some quick example text to build on the card title and make up the
+          bulk of the card's content.
+        </p>
+        <a href="{{ url_for('post_detail', id=1) }}" class="btn btn-primary"
+          >Go somewhere</a
+        >
+      </div>
     </div>
-    <!--End of First Card-->
-    <!--Second Card-->
-    <div class="col-md-4">
-            <div class="card" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-        </div>
-        <!--End of Second Card-->
+  </div>
+  <!--End of First Card-->
+  <!--Second Card-->
+  <div class="col-md-4">
+    <div class="card" style="width: 18rem;">
+      <img src="..." class="card-img-top" alt="..." />
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">
+          Some quick example text to build on the card title and make up the
+          bulk of the card's content.
+        </p>
+        <a href="{{ url_for('post_detail',id=2) }}" class="btn btn-primary"
+          >Go somewhere</a
+        >
+      </div>
+    </div>
+  </div>
+  <!--End of Second Card-->
 
-    <!--Third Card-->
-    <div class="col-md-4">
-            <div class="card" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-        </div>
-        <!--End of Third Card-->
+  <!--Third Card-->
+  <div class="col-md-4">
+    <div class="card" style="width: 18rem;">
+      <img src="..." class="card-img-top" alt="..." />
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">
+          Some quick example text to build on the card title and make up the
+          bulk of the card's content.
+        </p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+  </div>
+  <!--End of Third Card-->
 </div>
-{% endblock content %}
+{% else %}
+<h1>You are not allowed to see this page buddy!!!</h1>
+{% endif %} {% endblock content %}

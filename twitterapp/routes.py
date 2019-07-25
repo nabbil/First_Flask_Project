@@ -61,3 +61,13 @@ def posts():
 def logout():
     logout_user()
     return redirect(url_for('hello_world'))
+
+
+@app.route('/posts/<id>')
+def post_detail(id):
+    test_id = id
+    if current_user.is_authenticated:
+        print("User can see this stuff")
+        post = Post.query.get(id)
+        print("Dude get the heck out of here, who even are you?")
+    return render_template("post-detail.html", post=post)
